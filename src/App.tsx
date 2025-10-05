@@ -1,26 +1,24 @@
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import { theme } from "./theme";
-import { Navbar } from "./navigation/NavBar";
-import { Hero } from "./sections/Hero";
-import { About } from "./sections/About";
-import { Services } from "./sections/Services";
-import { Portfolio } from "./sections/Projects";
-import { Testimonials } from "./sections/Testimonials";
-import { Contact } from "./sections/Contact";
-import { Footer } from "./sections/Footer";
+import { ThemeProvider, CssBaseline, Box } from "@mui/material";
+import { theme } from "./theme/theme";
+import { Navbar } from "./pages/navigation/NavBar";
+import { Hero } from "./pages/section/Hero";
+import { About } from "./pages/section/About";
+import { Gallery } from "./components/Gallery";
+import { Contact } from "./pages/section/Contact";
+import { Story } from "./components/Story";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Portfolio />
-      <Testimonials />
-      <Contact />
-      <Footer />
+      <Box sx={{ overflowX: "hidden" }}>
+        <Navbar />
+        <Hero />
+        {/* <About /> */}
+        {/* <Story /> */}
+        <Gallery />
+        <Contact />
+      </Box>
     </ThemeProvider>
   );
 }
