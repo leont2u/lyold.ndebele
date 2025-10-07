@@ -1,14 +1,32 @@
 import React from "react";
 import { Box, Container, Typography, Grid, IconButton } from "@mui/material";
 import { motion } from "framer-motion";
-import { Mail, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Mail, Instagram, Linkedin, Facebook } from "lucide-react";
 import { colors } from "../../theme/theme";
+import { WhatsApp } from "@mui/icons-material";
 
 const socialLinks = [
-  { icon: Instagram, url: "https://instagram.com", label: "Instagram" },
-  { icon: Linkedin, url: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Youtube, url: "https://youtube.com", label: "YouTube" },
-  { icon: Mail, url: "mailto:your@email.com", label: "Email" },
+  {
+    icon: Instagram,
+    url: "https://instagram.com/lloyd_ndebele ",
+    label: "Instagram",
+  },
+  {
+    icon: Facebook,
+    url: "https://facebook.com/Lloyd Ndebele",
+    label: "Facebook",
+  },
+  {
+    icon: Linkedin,
+    url: "https://www.linkedin.com/in/lloyd-ndebele/ ",
+    label: "LinkedIn",
+  },
+  { icon: Mail, url: "mailto:ndebelelloydn@gmail.com", label: "Email" },
+  {
+    icon: WhatsApp,
+    url: "https://wa.me/263783638876 ",
+    label: "WhatsApp",
+  },
 ];
 
 export const Contact: React.FC = () => {
