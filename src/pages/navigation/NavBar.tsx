@@ -120,15 +120,21 @@ export const Navbar: React.FC = () => {
     <>
       <AppBar
         position="fixed"
-        elevation={trigger ? 4 : 0}
+        elevation={0}
         sx={{
           backgroundColor: trigger ? colors.background.overlay : "transparent",
-          backdropFilter: trigger ? "blur(10px)" : "none",
+          backdropFilter: trigger ? "transparent" : "none",
           transition: "all 0.3s ease-in-out",
         }}
       >
-        <Container maxWidth="lg">
-          <Toolbar sx={{ justifyContent: "space-between", py: 2 }}>
+        <Container maxWidth="xl">
+          <Toolbar
+            sx={{
+              justifyContent: "space-between",
+              py: 2,
+              mx: { xs: 0, md: 5 },
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -136,15 +142,29 @@ export const Navbar: React.FC = () => {
             >
               <Box
                 sx={{
-                  fontFamily: '"Playfair Display", serif',
-                  fontSize: "1.5rem",
-                  fontWeight: 700,
-                  color: colors.text.primary,
+                  width: 54,
+                  height: 54,
+                  borderRadius: "50%",
+                  display: "flex",
+                  ml: 3,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1.5px solid rgba(255,255,255,0.4)",
+                  color: "#fff",
+                  fontFamily: "'Great Vibes', cursive",
+                  fontSize: "1.6rem",
                   cursor: "pointer",
+                  backdropFilter: "blur(4px)",
+                  transition: "all 0.4s ease",
+                  "&:hover": {
+                    boxShadow: "0 0 15px rgba(255,255,255,0.6)",
+                    borderColor: "#fff",
+                    transform: "scale(1.05)",
+                  },
                 }}
                 onClick={() => scrollToSection("#home")}
               >
-                Lloyd Ndebele
+                LN
               </Box>
             </motion.div>
 

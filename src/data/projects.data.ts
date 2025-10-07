@@ -1,3 +1,4 @@
+import loopingVideo from "../assets/video/looping-video.mp4";
 export interface Project {
   id: string;
   title: string;
@@ -56,16 +57,48 @@ export const projects: Project[] = [
     tags: ["Aviation", "Commercial", "Cinematic"],
     date: "2024-04",
   },
-  // Add more projects here - supports both images and videos
-  // {
-  //   id: '5',
-  //   title: 'Sample Video Project',
-  //   description: 'A looping video showcase',
-  //   category: 'Videography',
-  //   mediaType: 'video',
-  //   mediaUrl: '/videos/sample.mp4',
-  //   thumbnail: '/images/video-thumb.jpg',
-  //   tags: ['Video', 'Motion'],
-  //   date: '2024-05',
-  // },
+  {
+    id: "5",
+    title: "Aviation Project",
+    description: "Commercial aviation cinematography",
+    category: "Videography",
+    mediaType: "image",
+    mediaUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4190.JPG-TdzUWgrjg0W6WLXVwFvtHR65rsAF4E.jpeg",
+    tags: ["Aviation", "Commercial", "Cinematic"],
+    date: "2024-04",
+  },
+  {
+    id: "6",
+    title: "Aviation Project",
+    description: "Commercial aviation cinematography",
+    category: "Videography",
+    mediaType: "image",
+    mediaUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4190.JPG-TdzUWgrjg0W6WLXVwFvtHR65rsAF4E.jpeg",
+    tags: ["Aviation", "Commercial", "Cinematic"],
+    date: "2024-04",
+  },
+  {
+    id: "7",
+    title: "Sample Video Project",
+    description: "A looping video showcase",
+    category: "Videography",
+    mediaType: "video",
+    mediaUrl: loopingVideo,
+    thumbnail: "/images/video-thumb.jpg",
+    tags: ["Video", "Motion"],
+    date: "2024-05",
+  },
+  {
+    id: "8",
+    title: "Aviation Project",
+    description: "Commercial aviation cinematography",
+    category: "Videography",
+    mediaType: "image",
+    mediaUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4190.JPG-TdzUWgrjg0W6WLXVwFvtHR65rsAF4E.jpeg",
+    tags: ["Aviation", "Commercial", "Cinematic"],
+    date: "2024-04",
+  },
 ];
