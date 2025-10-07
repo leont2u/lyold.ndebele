@@ -3,6 +3,7 @@ import { Box, Button, Typography, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import heroVideo from "../../assets/video/heroVideo.mp4";
+import video from "../../assets/video/video.MP4";
 
 export const Hero: React.FC = () => {
   return (
@@ -42,7 +43,7 @@ export const Hero: React.FC = () => {
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(to left, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0.3) 100%)",
+            "linear-gradient(to left, rgba(0,0,0,0.8) 15%, rgba(0,0,0,0.3) 100%)",
           zIndex: 1,
         }}
       />
