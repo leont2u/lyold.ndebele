@@ -1,22 +1,25 @@
 import { createTheme } from "@mui/material/styles";
 
-// Centralized color palette - change these to update the entire site
+// 🎨 Centralized color palette
 export const colors = {
-  primary: "#1a1a1a",
+  primary: "#0a0a0a", // slightly deeper black
   secondary: "#f5f5f5",
-  accent: "#d4af37", // Gold accent
+  accent: "#d4af37", // gold accent
   text: {
     primary: "#ffffff",
-    secondary: "#cccccc",
+    secondary: "#bdbdbd",
     dark: "#1a1a1a",
   },
   background: {
-    dark: "#0a0a0a",
-    overlay: "rgba(0, 0, 0, 0.7)",
-    card: "rgba(26, 26, 26, 0.8)",
+    dark: "#050505",
+    overlay: "rgba(0, 0, 0, 0.75)",
+    card: "rgba(26, 26, 26, 0.85)",
   },
 };
 
+// 🪄 Typography choices:
+// Headings: Cinzel — cinematic, elegant
+// Body: Inter — modern, highly legible
 export const theme = createTheme({
   palette: {
     mode: "dark",
@@ -36,41 +39,54 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Playfair Display", "Roboto", serif',
+    fontFamily: '"Inter", "Cinzel", serif',
     h1: {
-      fontFamily: '"Playfair Display", serif',
-      fontSize: "4rem",
+      fontFamily: '"Cinzel", serif',
+      fontSize: "4.5rem",
       fontWeight: 700,
-      letterSpacing: "0.02em",
+      letterSpacing: "0.04em",
+      lineHeight: 1.1,
+      "@media (max-width:900px)": {
+        fontSize: "3.2rem",
+      },
       "@media (max-width:600px)": {
-        fontSize: "2.5rem",
+        fontSize: "2.4rem",
       },
     },
     h2: {
-      fontFamily: '"Playfair Display", serif',
+      fontFamily: '"Cinzel", serif',
       fontSize: "3rem",
       fontWeight: 600,
+      letterSpacing: "0.03em",
       "@media (max-width:600px)": {
         fontSize: "2rem",
       },
     },
     h3: {
-      fontFamily: '"Playfair Display", serif',
+      fontFamily: '"Cinzel", serif',
       fontSize: "2rem",
       fontWeight: 600,
+      letterSpacing: "0.02em",
       "@media (max-width:600px)": {
         fontSize: "1.5rem",
       },
     },
     body1: {
-      fontFamily: '"Roboto", sans-serif',
-      fontSize: "1rem",
-      lineHeight: 1.7,
+      fontFamily: '"Inter", sans-serif',
+      fontSize: "1.05rem",
+      lineHeight: 1.75,
+      fontWeight: 400,
     },
     body2: {
-      fontFamily: '"Roboto", sans-serif',
-      fontSize: "0.875rem",
+      fontFamily: '"Inter", sans-serif',
+      fontSize: "0.95rem",
       lineHeight: 1.6,
+      fontWeight: 300,
+    },
+    button: {
+      fontFamily: '"Inter", sans-serif',
+      fontWeight: 500,
+      letterSpacing: "0.08em",
     },
   },
   components: {
@@ -78,10 +94,11 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: "none",
-          borderRadius: 0,
-          padding: "12px 32px",
-          fontSize: "0.875rem",
-          letterSpacing: "0.1em",
+          borderRadius: "50px",
+          padding: "10px 28px",
+          fontSize: "1rem",
+          letterSpacing: "0.03em",
+          transition: "all 0.3s ease",
         },
       },
     },

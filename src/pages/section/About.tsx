@@ -1,16 +1,6 @@
-import React from "react";
-import { Box, Container, Typography, Grid } from "@mui/material";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { colors } from "../../theme/theme";
-import { Camera, Film, Award } from "lucide-react";
-
-const stats = [
-  { icon: Camera, label: "Projects Completed", value: "50+" },
-  { icon: Film, label: "Years Experience", value: "5+" },
-  { icon: Award, label: "Awards Won", value: "10+" },
-];
+import React, { useRef } from "react";
+import { Box, Container, Typography, Grid, Button } from "@mui/material";
+import { motion, useInView } from "framer-motion";
 
 export const About: React.FC = () => {
   const ref = useRef(null);
@@ -21,115 +11,151 @@ export const About: React.FC = () => {
       id="about"
       ref={ref}
       sx={{
-        py: { xs: 8, md: 12 },
-        backgroundColor: colors.background.dark,
+        py: { xs: 10, md: 14 },
+        backgroundColor: "#121212",
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
-          {/* Image Side */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
+        <Grid
+          container
+          spacing={4}
+          alignItems="center"
+          justifyContent="center"
+          sx={{
+            flexDirection: { xs: "column", md: "row" },
+          }}
+        >
+          {/* Left Image Grid */}
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                gridTemplateRows: "auto",
+                gap: 2,
+              }}
             >
-              <Box
-                sx={{
-                  position: "relative",
-                  "&::before": {
-                    content: '""',
-                    position: "absolute",
-                    top: -20,
-                    left: -20,
-                    right: 20,
-                    bottom: 20,
-                    border: `2px solid ${colors.accent}`,
-                    zIndex: 0,
-                  },
-                }}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7 }}
               >
                 <Box
                   component="img"
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7385.JPG-ntgz5QOdibwwcQWVusem4asxLGVsit.jpeg"
-                  alt="About Me"
+                  alt="Camera work"
                   sx={{
                     width: "100%",
-                    height: "auto",
-                    position: "relative",
-                    zIndex: 1,
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: 2,
                   }}
                 />
+              </motion.div>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                >
+                  <Box
+                    component="img"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4188.JPG-OzUIl2qEN21isLGv5AtW6hGIEpnSY9.jpeg"
+                    alt="Behind the scenes"
+                    sx={{
+                      width: "100%",
+                      height: "230px",
+                      objectFit: "cover",
+                      borderRadius: 2,
+                    }}
+                  />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                >
+                  <Box
+                    component="img"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4182.JPG-44aqNvDNUPjzYGp2fHL5h9N3iJr0AP.jpeg"
+                    alt="Photographer at work"
+                    sx={{
+                      width: "100%",
+                      height: "230px",
+                      objectFit: "cover",
+                      borderRadius: 2,
+                    }}
+                  />
+                </motion.div>
               </Box>
-            </motion.div>
+            </Box>
           </Grid>
 
-          {/* Content Side */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          {/* Right Text Section */}
+          <Grid size={{ xs: 12, md: 5 }}>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <Typography
-                variant="h2"
-                sx={{ mb: 3, color: colors.text.primary }}
+              <Box
+                sx={{
+                  borderRadius: 2,
+                  p: { xs: 4, sm: 6 },
+                  maxWidth: 450,
+                  ml: { md: 4 },
+                }}
               >
-                About Me
-              </Typography>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#fff",
+                    mb: 2,
+                    fontWeight: 600,
+                  }}
+                >
+                  About me
+                </Typography>
 
-              <Typography
-                variant="body1"
-                sx={{ mb: 3, color: colors.text.secondary }}
-              >
-                I'm a passionate cinematographer and visual storyteller
-                dedicated to capturing authentic moments that tell compelling
-                stories. With years of experience in both photography and
-                videography, I bring a unique perspective to every project.
-              </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "#bbb",
+                    lineHeight: 1.8,
+                    mb: 4,
+                  }}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Curabitur facilisis felis eget sem porttitor pharetra. Ut
+                  ornare felis lacus, quis posuere lacus placerat sit amet.
+                  Integer non mi in elit lacinia.
+                </Typography>
 
-              <Typography
-                variant="body1"
-                sx={{ mb: 4, color: colors.text.secondary }}
-              >
-                My work spans across various genres including commercial
-                productions, documentaries, events, and creative projects. I
-                believe in the power of visual storytelling to connect, inspire,
-                and move audiences.
-              </Typography>
-
-              {/* Stats */}
-              <Grid container spacing={3}>
-                {stats.map((stat, index) => (
-                  <Grid size={{ xs: 12, sm: 4 }} key={index}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    >
-                      <Box sx={{ textAlign: "center" }}>
-                        <stat.icon
-                          size={32}
-                          color={colors.accent}
-                          style={{ marginBottom: 8 }}
-                        />
-                        <Typography
-                          variant="h3"
-                          sx={{ color: colors.accent, mb: 1 }}
-                        >
-                          {stat.value}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{ color: colors.text.secondary }}
-                        >
-                          {stat.label}
-                        </Typography>
-                      </Box>
-                    </motion.div>
-                  </Grid>
-                ))}
-              </Grid>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#fff",
+                    color: "#000",
+                    textTransform: "none",
+                    borderRadius: "999px",
+                    px: 3,
+                    py: 1,
+                    "&:hover": {
+                      backgroundColor: "#e5e5e5",
+                    },
+                  }}
+                >
+                  Learn more
+                </Button>
+              </Box>
             </motion.div>
           </Grid>
         </Grid>

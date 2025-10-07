@@ -1,95 +1,133 @@
-import React, { useState } from "react";
-import { Box, Container, Typography, Grid, Tabs, Tab } from "@mui/material";
+import React from "react";
+import { Box, Container, Typography, Grid } from "@mui/material";
 import { motion } from "framer-motion";
-import { colors } from "../theme/theme";
 import { projects } from "../data/projects.data";
-import { ProjectCard } from "./ProjectCard";
 
 export const Gallery: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const categories = [
-    "All",
-    ...Array.from(new Set(projects.map((p) => p.category))),
-  ];
-
-  const filteredProjects =
-    selectedCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory);
-
   return (
     <Box
       id="gallery"
       sx={{
-        py: { xs: 8, md: 12 },
-        backgroundColor: colors.background.dark,
+        py: { xs: 8, md: 10 },
+        width: "100vw",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
+        {/* Title */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          style={{ textAlign: "center" }}
         >
           <Typography
             variant="h2"
             sx={{
-              mb: 2,
-              textAlign: "center",
-              color: colors.text.primary,
+              mb: 3,
+              fontWeight: 600,
+              color: "#ffffff",
             }}
           >
-            My Gallery
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              mb: 6,
-              textAlign: "center",
-              color: colors.text.secondary,
-              maxWidth: 600,
-              mx: "auto",
-            }}
-          >
-            A collection of my recent work spanning photography, videography,
-            and creative projects
+            Projects
           </Typography>
         </motion.div>
 
-        {/* Category Filter */}
-        <Box sx={{ mb: 6, display: "flex", justifyContent: "center" }}>
-          <Tabs
-            value={selectedCategory}
-            onChange={(_, newValue) => setSelectedCategory(newValue)}
-            sx={{
-              "& .MuiTab-root": {
-                color: colors.text.secondary,
-                fontSize: "0.95rem",
-                letterSpacing: "0.1em",
-                "&.Mui-selected": {
-                  color: colors.accent,
-                },
-              },
-              "& .MuiTabs-indicator": {
-                backgroundColor: colors.accent,
-              },
-            }}
-          >
-            {categories.map((category) => (
-              <Tab key={category} label={category} value={category} />
-            ))}
-          </Tabs>
-        </Box>
+        {/* Grid */}
+        <Grid container spacing={2}>
+          {projects.map((project, index) => {
+            const gridSize =
+              index === 6
+                ? { xs: 12, sm: 12, md: 8 }
+                : index === 7
+                ? { xs: 12, sm: 12, md: 4 }
+                : { xs: 12, sm: 6, md: 4 };
 
-        {/* Projects Grid */}
-        <Grid container spacing={3}>
-          {filteredProjects.map((project, index) => (
-            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={project.id}>
-              <ProjectCard project={project} index={index} />
-            </Grid>
-          ))}
+            // Check if media is a video
+            const isVideo = project.mediaUrl?.match(/\.(mp4|mov|webm)$/i);
+
+            return (
+              <Grid
+                key={project.id || index}
+                size={gridSize}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    position: "relative",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    width: "100%",
+                    height: "240px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {/* Conditionally render video or image */}
+                  {isVideo ? (
+                    <Box
+                      component="video"
+                      src={project.mediaUrl}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <Box
+                      component="img"
+                      src={project.mediaUrl}
+                      alt={project.title}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        transition: "transform 0.4s ease",
+                        "&:hover": { transform: "scale(1.05)" },
+                      }}
+                    />
+                  )}
+
+                  {/* Overlay Text */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: "60px",
+                      background:
+                        "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%)",
+                      display: "flex",
+                      alignItems: "flex-end",
+                      justifyContent: "flex-start",
+                      p: 2,
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "1rem",
+                      }}
+                    >
+                      {project.title}
+                    </Typography>
+                  </Box>
+                </motion.div>
+              </Grid>
+            );
+          })}
         </Grid>
       </Container>
     </Box>
