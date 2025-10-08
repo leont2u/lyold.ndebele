@@ -1,11 +1,24 @@
 import React from "react";
-import { Box, Button, Typography, Stack } from "@mui/material";
+import { Box, Button, Typography, Stack, IconButton } from "@mui/material";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  Instagram,
+  Facebook,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 import heroVideo from "../../assets/video/heroVideo.mp4";
-import video from "../../assets/video/video.MP4";
+import { WhatsApp } from "@mui/icons-material";
 
 export const Hero: React.FC = () => {
+  const socialLinks = [
+    { icon: <WhatsApp size={22} />, href: "https://wa.me/263783638876" },
+    { icon: <Linkedin size={22} />, href: "https://linkedin.com" },
+    { icon: <Instagram size={22} />, href: "https://instagram.com" },
+    { icon: <Facebook size={22} />, href: "https://facebook.com" },
+  ];
+
   return (
     <Box
       id="home"
@@ -17,7 +30,7 @@ export const Hero: React.FC = () => {
         color: "#fff",
       }}
     >
-      {/* Video Background */}
+      {/* Background Video */}
       <Box
         component="video"
         src={heroVideo}
@@ -32,12 +45,12 @@ export const Hero: React.FC = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          zIndex: 0,
           filter: "brightness(65%)",
+          zIndex: 0,
         }}
       />
 
-      {/* Overlay Gradient */}
+      {/* Gradient Overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -48,11 +61,11 @@ export const Hero: React.FC = () => {
         }}
       />
 
-      {/* Camera Shutter Glow */}
+      {/* Camera Glow Effect */}
       <motion.div
         animate={{
           scale: [1, 1.05, 1],
-          opacity: [0.5, 0.8, 0.5],
+          opacity: [0.4, 0.7, 0.4],
         }}
         transition={{
           duration: 5,
@@ -73,7 +86,90 @@ export const Hero: React.FC = () => {
         }}
       />
 
-      {/* Content (on right side) */}
+      {/* 🎯 Left-side Animated Social Icons */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: { xs: "10px", md: "40px" },
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 3,
+          display: { xs: "none", sm: "flex" },
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+          ml: 10,
+        }}
+      >
+        {/* Vertical Gold Line */}
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{ height: "120px" }}
+          transition={{ duration: 1 }}
+          style={{
+            width: "2px",
+            backgroundColor: "rgba(255,255,255,0.4)",
+
+            marginBottom: "10px",
+          }}
+        />
+
+        {/* Social Icons */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <Stack spacing={2} alignItems="center">
+            {socialLinks.map((social, index) => (
+              <motion.div
+                key={index}
+                whileHover={{
+                  scale: 1.2,
+                  y: -2,
+                  rotate: 5,
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <IconButton
+                  component="a"
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    color: "#fff",
+                    border: "1px solid rgba(255,255,255,0.2)",
+
+                    background: "rgba(255, 255, 255, 0.1)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      color: "#d4af37",
+                      borderColor: "#d4af37",
+                      background: "rgba(255,255,255,0.05)",
+                    },
+                  }}
+                >
+                  {social.icon}
+                </IconButton>
+              </motion.div>
+            ))}
+          </Stack>
+        </motion.div>
+
+        {/* Bottom Line */}
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{ height: "120px" }}
+          transition={{ duration: 1, delay: 0.3 }}
+          style={{
+            width: "2px",
+            backgroundColor: "rgba(255,255,255,0.4)",
+            marginTop: "10px",
+          }}
+        />
+      </Box>
+
+      {/* Content (Right Side) */}
       <Box
         sx={{
           position: "relative",
@@ -92,7 +188,6 @@ export const Hero: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <Stack spacing={3} alignItems="flex-end">
-            {/* Tagline */}
             <Typography
               variant="overline"
               sx={{
@@ -104,7 +199,6 @@ export const Hero: React.FC = () => {
               CINEMATOGRAPHER • STORYTELLER • CREATIVE
             </Typography>
 
-            {/* Name */}
             <Typography
               variant="h1"
               sx={{
@@ -116,7 +210,6 @@ export const Hero: React.FC = () => {
               LLOYD NDEBELE
             </Typography>
 
-            {/* Quote */}
             <Typography
               variant="h6"
               sx={{
@@ -129,8 +222,8 @@ export const Hero: React.FC = () => {
               “Capturing emotions in motion — one frame at a time.”
             </Typography>
 
-            {/* Modern CTA Buttons */}
-            <Stack direction="row" spacing={2} sx={{ pt: 2 }}>
+            {/* Buttons */}
+            {/* <Stack direction="row" spacing={2} sx={{ pt: 2 }}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
@@ -185,7 +278,7 @@ export const Hero: React.FC = () => {
                   Get In Touch
                 </Button>
               </motion.div>
-            </Stack>
+            </Stack> */}
           </Stack>
         </motion.div>
       </Box>
@@ -208,6 +301,7 @@ export const Hero: React.FC = () => {
       >
         <ChevronDown size={32} color="white" opacity={0.8} />
       </motion.div>
+
       {/* Bottom Gradient Fade */}
       <Box
         sx={{
