@@ -1,13 +1,10 @@
 import { CssBaseline, Box } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { getTheme } from "./theme/theme";
-import { useThemeMode, ThemeProvider } from "./context/ThemeContext"; // ✅ import both
-import { Navbar } from "./pages/navigation/NavBar";
+import { useThemeMode, ThemeProvider } from "./context/ThemeContext";
 import { Hero } from "./pages/section/Hero";
-import { About } from "./pages/section/About";
 import { Projects } from "./pages/section/Projects";
 import { Process } from "./pages/section/Process";
-import { Testimonials } from "./pages/section/Testimonials";
 import { Contact } from "./pages/section/Contact";
 import { Footer } from "./pages/section/Footer";
 

@@ -1,5 +1,3 @@
-"use client";
-
 import type React from "react";
 import {
   Box,
@@ -11,17 +9,13 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
-import backgroundImage from "../../assets/images/backgroundImage.JPG";
 
 export const Hero: React.FC = () => {
   return (
     <Box
       id="home"
       sx={{
-        backgroundImage: `url(${backgroundImage})`, // Make sure image is in /public
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        bgcolor: "#0a0a0a",
         color: "#fff",
         minHeight: "100vh",
         overflow: "hidden",
