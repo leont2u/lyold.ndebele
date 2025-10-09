@@ -1,319 +1,200 @@
-import React from "react";
-import { Box, Button, Typography, Stack, IconButton } from "@mui/material";
-import { motion } from "framer-motion";
+"use client";
+
+import type React from "react";
 import {
-  ChevronDown,
-  Instagram,
-  Facebook,
-  Linkedin,
-  Youtube,
-} from "lucide-react";
-import heroVideo from "../../assets/video/heroVideo.mp4";
-import { WhatsApp } from "@mui/icons-material";
+  Box,
+  Container,
+  Typography,
+  Button,
+  IconButton,
+  Chip,
+} from "@mui/material";
+import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
+import backgroundImage from "../../assets/images/backgroundImage.JPG";
 
 export const Hero: React.FC = () => {
-  const socialLinks = [
-    { icon: <WhatsApp size={22} />, href: "https://wa.me/263783638876" },
-    { icon: <Linkedin size={22} />, href: "https://linkedin.com" },
-    { icon: <Instagram size={22} />, href: "https://instagram.com" },
-    { icon: <Facebook size={22} />, href: "https://facebook.com" },
-  ];
-
   return (
     <Box
       id="home"
       sx={{
-        position: "relative",
-        height: "100vh",
-        width: "100%",
-        overflow: "hidden",
+        backgroundImage: `url(${backgroundImage})`, // Make sure image is in /public
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         color: "#fff",
+        minHeight: "100vh",
+        overflow: "hidden",
+        position: "relative",
       }}
     >
-      {/* Background Video */}
-      <Box
-        component="video"
-        src={heroVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
+      {/* ===== Hero Content ===== */}
+      <Container
+        maxWidth="lg"
         sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          filter: "brightness(65%)",
-          zIndex: 0,
-        }}
-      />
-
-      {/* Gradient Overlay */}
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to left, rgba(0,0,0,0.8) 15%, rgba(0,0,0,0.3) 100%)",
-          zIndex: 1,
-        }}
-      />
-
-      {/* Camera Glow Effect */}
-      <motion.div
-        animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.4, 0.7, 0.4],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          position: "absolute",
-          top: "40%",
-          right: "15%",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%)",
-          filter: "blur(30px)",
-          zIndex: 1,
-        }}
-      />
-
-      {/* 🎯 Left-side Animated Social Icons */}
-      <Box
-        sx={{
-          position: "absolute",
-          left: { xs: "10px", md: "40px" },
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 3,
-          display: { xs: "none", sm: "flex" },
-          flexDirection: "column",
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
           alignItems: "center",
-          gap: 2,
-          ml: 10,
-        }}
-      >
-        {/* Vertical Gold Line */}
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: "120px" }}
-          transition={{ duration: 1 }}
-          style={{
-            width: "2px",
-            backgroundColor: "rgba(255,255,255,0.4)",
-
-            marginBottom: "10px",
-          }}
-        />
-
-        {/* Social Icons */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <Stack spacing={2} alignItems="center">
-            {socialLinks.map((social, index) => (
-              <motion.div
-                key={index}
-                whileHover={{
-                  scale: 1.2,
-                  y: -2,
-                  rotate: 5,
-                }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <IconButton
-                  component="a"
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,0.2)",
-
-                    background: "rgba(255, 255, 255, 0.1)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      color: "#d4af37",
-                      borderColor: "#d4af37",
-                      background: "rgba(255,255,255,0.05)",
-                    },
-                  }}
-                >
-                  {social.icon}
-                </IconButton>
-              </motion.div>
-            ))}
-          </Stack>
-        </motion.div>
-
-        {/* Bottom Line */}
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: "120px" }}
-          transition={{ duration: 1, delay: 0.3 }}
-          style={{
-            width: "2px",
-            backgroundColor: "rgba(255,255,255,0.4)",
-            marginTop: "10px",
-          }}
-        />
-      </Box>
-
-      {/* Content (Right Side) */}
-      <Box
-        sx={{
+          minHeight: "100vh",
           position: "relative",
-          zIndex: 2,
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: { xs: "center", md: "flex-end" },
-          px: { xs: 3, md: 10 },
-          textAlign: { xs: "center", md: "right" },
+          zIndex: 5,
+          py: 8,
         }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+        {/* ===== Navbar ===== */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            px: 4,
+            py: 3,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 10,
+          }}
         >
-          <Stack spacing={3} alignItems="flex-end">
-            <Typography
-              variant="overline"
+          {/* Logo / Name */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              fontWeight: 700,
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+            }}
+          >
+            <Box
               sx={{
-                letterSpacing: "0.1em",
-                color: "rgba(255,255,255,0.8)",
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                backgroundColor: "#ff6433",
+              }}
+            />
+            Lloyd
+          </Box>
+
+          {/* Hamburger Menu */}
+          <IconButton sx={{ color: "#fff" }}>
+            <Menu />
+          </IconButton>
+        </Box>
+        {/* === Left Column === */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Box sx={{ position: "relative" }}>
+            {/* Status Badge */}
+            <Chip
+              label="Available for Work"
+              sx={{
+                bgcolor: "#222",
+                color: "#fff",
+                mb: 2,
                 fontWeight: 500,
+                px: 2,
               }}
-            >
-              CINEMATOGRAPHER • STORYTELLER • CREATIVE
-            </Typography>
+            />
 
+            {/* Title */}
             <Typography
-              variant="h1"
+              variant="h4"
               sx={{
-                fontSize: { xs: "2.8rem", md: "5.5rem" },
-                fontWeight: 700,
-                lineHeight: 1.1,
-              }}
-            >
-              LLOYD NDEBELE
-            </Typography>
-
-            <Typography
-              variant="h6"
-              sx={{
+                fontWeight: 600,
+                fontSize: { xs: "1.5rem", md: "2rem" },
+                lineHeight: 1.4,
                 maxWidth: 500,
-                color: "rgba(255,255,255,0.85)",
-                lineHeight: 1.6,
-                fontWeight: 300,
+                mb: 3,
               }}
             >
-              “Capturing emotions in motion — one frame at a time.”
+              Cinematographer & Video Editor based in Zimbabwe
             </Typography>
 
-            {/* Buttons */}
-            {/* <Stack direction="row" spacing={2} sx={{ pt: 2 }}>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Button
-                  variant="contained"
-                  sx={{
-                    px: 3,
-                    py: 1,
-                    borderRadius: "50px",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    color: "#fff",
-                    backdropFilter: "blur(8px)",
-                    textTransform: "none",
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                    letterSpacing: "0.02em",
-                    boxShadow: "0 0 15px rgba(255,255,255,0.05)",
-                    "&:hover": {
-                      background: "rgba(255, 255, 255, 0.25)",
-                      boxShadow: "0 0 20px rgba(255,255,255,0.15)",
-                    },
-                  }}
-                >
-                  View My Work
-                </Button>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    px: 3,
-                    py: 1,
-                    borderRadius: "50px",
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    backdropFilter: "blur(8px)",
-                    textTransform: "none",
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                    letterSpacing: "0.02em",
-                    "&:hover": {
-                      borderColor: "#fff",
-                      background: "rgba(255,255,255,0.1)",
-                    },
-                  }}
-                >
-                  Get In Touch
-                </Button>
-              </motion.div>
-            </Stack> */}
-          </Stack>
+            {/* Giant Name Behind */}
+            <Typography
+              sx={{
+                fontSize: { xs: "4rem", sm: "6rem", md: "8rem" },
+                fontWeight: 900,
+                lineHeight: 0.9,
+                color: "rgba(255, 255, 255, 0.05)",
+                letterSpacing: "-0.02em",
+                userSelect: "none",
+              }}
+            >
+              Lloyd
+            </Typography>
+          </Box>
         </motion.div>
-      </Box>
 
-      {/* Scroll Cue */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          position: "absolute",
-          bottom: "30px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 3,
-        }}
-      >
-        <ChevronDown size={32} color="white" opacity={0.8} />
-      </motion.div>
+        {/* === Right Column === */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: { xs: "center", md: "flex-start" },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
+            {/* Profile Image */}
+            <Box
+              component="img"
+              src="/IMG_4188.JPG"
+              alt="Lloyd Ndebele"
+              sx={{
+                width: "100%",
+                maxWidth: 400,
+                borderRadius: 3,
+                mb: 4,
+                objectFit: "cover",
+                aspectRatio: "3 / 4",
+              }}
+            />
 
-      {/* Bottom Gradient Fade */}
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: "110px",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%)",
-          zIndex: 2,
-        }}
-      />
+            {/* Short Intro */}
+            <Typography
+              sx={{
+                color: "#ccc",
+                mb: 3,
+                fontSize: "1rem",
+                maxWidth: 400,
+              }}
+            >
+              Hi, I'm Lloyd Ndebele — a cinematographer and video editor
+              passionate about creating visual stories that move and inspire.
+            </Typography>
+
+            {/* CTA Button */}
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#ff6433",
+                color: "#fff",
+                fontWeight: 600,
+                px: 4,
+                py: 1.5,
+                borderRadius: "30px",
+                textTransform: "none",
+                "&:hover": {
+                  backgroundColor: "#e55a2e",
+                },
+              }}
+            >
+              See my works
+            </Button>
+          </Box>
+        </motion.div>
+      </Container>
     </Box>
   );
 };

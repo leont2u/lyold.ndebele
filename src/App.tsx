@@ -1,22 +1,42 @@
-import { ThemeProvider, CssBaseline, Box } from "@mui/material";
-import { theme } from "./theme/theme";
+import { CssBaseline, Box } from "@mui/material";
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { getTheme } from "./theme/theme";
+import { useThemeMode, ThemeProvider } from "./context/ThemeContext"; // ✅ import both
 import { Navbar } from "./pages/navigation/NavBar";
 import { Hero } from "./pages/section/Hero";
-import { Gallery } from "./components/Gallery";
+import { About } from "./pages/section/About";
+import { Projects } from "./pages/section/Projects";
+import { Process } from "./pages/section/Process";
+import { Testimonials } from "./pages/section/Testimonials";
 import { Contact } from "./pages/section/Contact";
+import { Footer } from "./pages/section/Footer";
+
+function AppContent() {
+  const { mode } = useThemeMode();
+  const theme = getTheme(mode);
+
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ overflowX: "hidden" }}>
+        {/* <Navbar /> */}
+        <Hero />
+        {/* <About /> */}
+        <Projects />
+        <Process />
+        {/* <Testimonials /> */}
+        <Contact />
+        <Footer />
+      </Box>
+    </MuiThemeProvider>
+  );
+}
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box sx={{ overflowX: "hidden" }}>
-        <Navbar />
-        <Hero />
-        {/* <About />      */}
-        {/* <Story /> */}
-        <Gallery />
-        <Contact />
-      </Box>
+    <ThemeProvider>
+      {" "}
+      <AppContent />
     </ThemeProvider>
   );
 }
