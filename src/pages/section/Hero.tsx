@@ -3,9 +3,9 @@ import { Box, Container, Typography, IconButton, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { colors } from "../../theme/theme";
-import heroImage from "../../assets/images/backgroundImage.jpg";
 
 export const Hero: React.FC = () => {
+  const backgroundImage = "/images/backgroundImage.jpg";
   return (
     <Box
       id="home"
@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
     >
       <Box
         component="img"
-        src={heroImage}
+        src={backgroundImage}
         alt="Lloyd Ndebele"
         sx={{
           position: "absolute",
