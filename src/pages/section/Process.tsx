@@ -9,31 +9,30 @@ interface ProcessStep {
   title: string;
   description: string;
 }
-
 const processSteps: ProcessStep[] = [
   {
     number: "01.",
-    title: "analysis",
+    title: "Project Discovery",
     description:
-      "We analyze your project to identify the core message and set the direction for the next steps.",
+      "I start by understanding your vision, objectives, and the story you want to tell, so every project has a clear direction.",
   },
   {
     number: "02.",
-    title: "concept",
+    title: "Concept & Planning",
     description:
-      "We create compelling concepts, bringing ideas to life with visual mood boards.",
+      "I develop creative concepts and plan the shoot, including storyboarding, shot lists, and visual style to bring your ideas to life.",
   },
   {
     number: "03.",
-    title: "visuals & manifesto",
+    title: "Filming & Production",
     description:
-      "We provide 3D visualizations and a manifesto to convey the key message and ensure lasting impact.",
+      "I capture high-quality visuals using professional cameras (Blackmagic, Sony, Canon) and drones, ensuring cinematic storytelling.",
   },
   {
     number: "04.",
-    title: "budgeting",
+    title: "Editing & Post-Production",
     description:
-      "We offer transparent pricing with no hidden costs for your peace of mind.",
+      "I craft the final story in Premiere Pro, DaVinci Resolve, and After Effects, adding polish, motion, and visual effects for maximum impact.",
   },
 ];
 

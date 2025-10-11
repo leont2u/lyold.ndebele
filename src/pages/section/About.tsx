@@ -41,7 +41,7 @@ export const About: React.FC = () => {
               mb: 6,
             }}
           >
-            Based in Zimbabwe🇿🇼, operating worldwide
+            Based in Zimbabwe🇿🇼
           </Typography>
 
           {/* Main heading */}
@@ -56,8 +56,8 @@ export const About: React.FC = () => {
               mx: "auto",
             }}
           >
-            we are a creative collective of event producers, marketing
-            specialists, art directors, designers, and strategic analysts.
+            A visual storyteller and creative producer passionate about
+            transforming real moments into cinematic experiences.
           </Typography>
 
           {/* Bottom right-aligned paragraph */}
@@ -77,8 +77,10 @@ export const About: React.FC = () => {
                 mb: 1.5,
               }}
             >
-              Together, we create bespoke solutions for each brand, embracing
-              high-impact creativity to craft memorable, innovative experiences.
+              My work spans across documentaries, short-form content, weddings,
+              corporate events, YouTube productions, films, drone
+              cinematography, and livestreaming — each project crafted with
+              purpose, emotion, and precision.
             </Typography>
             <Typography
               sx={{
@@ -87,9 +89,12 @@ export const About: React.FC = () => {
                 color: colors.text.secondary,
               }}
             >
-              Our diverse expertise allows us to approach each project with
-              fresh eyes and deliver exceptional results. People don’t just
-              attend events—they talk about them.
+              With experience behind the lens and in the edit suite, I bring
+              stories to life using Premiere Pro, DaVinci Resolve, and After
+              Effects, and shoot with professional gear including Blackmagic,
+              Sony, and Canon cameras. Blending creativity with strategy, I aim
+              to create visuals that not only look beautiful but connect deeply
+              — turning every project into a story worth remembering.
             </Typography>
           </Stack>
         </motion.div>
