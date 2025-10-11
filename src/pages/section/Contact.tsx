@@ -11,8 +11,9 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { colors } from "../../theme/theme";
 
-export const Contact = () => {
+export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -72,9 +73,9 @@ export const Contact = () => {
       component="section"
       id="contact"
       sx={{
-        bgcolor: "#0a0a0a",
-        color: "white",
-        py: { xs: 8, md: 12 },
+        bgcolor: colors.background.dark,
+        color: colors.text.primary,
+        py: { xs: 12, md: 16 },
       }}
     >
       <Container maxWidth="lg">
@@ -88,10 +89,11 @@ export const Contact = () => {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "3rem", md: "5rem", lg: "6rem" },
+                fontSize: { xs: "2.5rem", md: "4rem", lg: "5rem" },
                 fontWeight: 700,
                 letterSpacing: "-0.02em",
                 textTransform: "uppercase",
+                color: colors.text.primary,
               }}
             >
               GET IN TOUCH
@@ -123,19 +125,19 @@ export const Contact = () => {
                 variant="standard"
                 sx={{
                   "& .MuiInput-root": {
-                    color: "white",
+                    color: colors.text.primary,
                     "&:before": {
                       borderBottomColor: "rgba(255, 255, 255, 0.3)",
                     },
                     "&:hover:not(.Mui-disabled):before": {
-                      borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                      borderBottomColor: colors.accent,
                     },
                     "&:after": {
-                      borderBottomColor: "white",
+                      borderBottomColor: colors.accent,
                     },
                   },
                   "& .MuiInputLabel-root": {
-                    color: "rgba(255, 255, 255, 0.7)",
+                    color: colors.text.secondary,
                   },
                 }}
               />
@@ -148,19 +150,19 @@ export const Contact = () => {
                 variant="standard"
                 sx={{
                   "& .MuiInput-root": {
-                    color: "white",
+                    color: colors.text.primary,
                     "&:before": {
                       borderBottomColor: "rgba(255, 255, 255, 0.3)",
                     },
                     "&:hover:not(.Mui-disabled):before": {
-                      borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                      borderBottomColor: colors.accent,
                     },
                     "&:after": {
-                      borderBottomColor: "white",
+                      borderBottomColor: colors.accent,
                     },
                   },
                   "& .MuiInputLabel-root": {
-                    color: "rgba(255, 255, 255, 0.7)",
+                    color: colors.text.secondary,
                   },
                 }}
               />
@@ -185,19 +187,19 @@ export const Contact = () => {
                 variant="standard"
                 sx={{
                   "& .MuiInput-root": {
-                    color: "white",
+                    color: colors.text.primary,
                     "&:before": {
                       borderBottomColor: "rgba(255, 255, 255, 0.3)",
                     },
                     "&:hover:not(.Mui-disabled):before": {
-                      borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                      borderBottomColor: colors.accent,
                     },
                     "&:after": {
-                      borderBottomColor: "white",
+                      borderBottomColor: colors.accent,
                     },
                   },
                   "& .MuiInputLabel-root": {
-                    color: "rgba(255, 255, 255, 0.7)",
+                    color: colors.text.secondary,
                   },
                 }}
               />
@@ -211,19 +213,19 @@ export const Contact = () => {
                 variant="standard"
                 sx={{
                   "& .MuiInput-root": {
-                    color: "white",
+                    color: colors.text.primary,
                     "&:before": {
                       borderBottomColor: "rgba(255, 255, 255, 0.3)",
                     },
                     "&:hover:not(.Mui-disabled):before": {
-                      borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                      borderBottomColor: colors.accent,
                     },
                     "&:after": {
-                      borderBottomColor: "white",
+                      borderBottomColor: colors.accent,
                     },
                   },
                   "& .MuiInputLabel-root": {
-                    color: "rgba(255, 255, 255, 0.7)",
+                    color: colors.text.secondary,
                   },
                 }}
               />
@@ -244,19 +246,19 @@ export const Contact = () => {
                 variant="standard"
                 sx={{
                   "& .MuiInput-root": {
-                    color: "white",
+                    color: colors.text.primary,
                     "&:before": {
                       borderBottomColor: "rgba(255, 255, 255, 0.3)",
                     },
                     "&:hover:not(.Mui-disabled):before": {
-                      borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                      borderBottomColor: colors.accent,
                     },
                     "&:after": {
-                      borderBottomColor: "white",
+                      borderBottomColor: colors.accent,
                     },
                   },
                   "& .MuiInputLabel-root": {
-                    color: "rgba(255, 255, 255, 0.7)",
+                    color: colors.text.secondary,
                   },
                 }}
               />
@@ -268,10 +270,11 @@ export const Contact = () => {
                   width: 48,
                   height: 48,
                   borderRadius: "50%",
-                  bgcolor: "white",
-                  color: "black",
+                  bgcolor: colors.accent,
+                  color: colors.background.dark,
                   "&:hover": {
-                    bgcolor: "rgba(255, 255, 255, 0.9)",
+                    bgcolor: colors.accent,
+                    opacity: 0.9,
                   },
                   "&:disabled": {
                     bgcolor: "rgba(255, 255, 255, 0.3)",
@@ -279,7 +282,10 @@ export const Contact = () => {
                 }}
               >
                 {loading ? (
-                  <CircularProgress size={24} sx={{ color: "black" }} />
+                  <CircularProgress
+                    size={24}
+                    sx={{ color: colors.background.dark }}
+                  />
                 ) : (
                   <ArrowRight size={24} />
                 )}
@@ -307,23 +313,20 @@ export const Contact = () => {
           >
             <Typography
               variant="body2"
-              sx={{ color: "rgba(255, 255, 255, 0.7)", mb: 0.5 }}
+              sx={{ color: colors.text.secondary, mb: 0.5 }}
             >
               Hate contacts forms?
             </Typography>
-            <Typography
-              variant="body2"
-              sx={{ color: "rgba(255, 255, 255, 0.5)" }}
-            >
+            <Typography variant="body2" sx={{ color: colors.text.secondary }}>
               No big deal —{" "}
               <Box
                 component="a"
-                href="mailto:your@email.com"
+                href="mailto:lloydndebele@email.com"
                 sx={{
-                  color: "white",
+                  color: colors.accent,
                   textDecoration: "underline",
                   "&:hover": {
-                    color: "rgba(255, 255, 255, 0.8)",
+                    opacity: 0.8,
                   },
                 }}
               >
