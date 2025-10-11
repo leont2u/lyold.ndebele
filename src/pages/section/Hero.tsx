@@ -5,7 +5,7 @@ import { Menu } from "lucide-react";
 import { colors } from "../../theme/theme";
 
 export const Hero: React.FC = () => {
-  const backgroundImage = "/images/backgroundImage.jpg";
+  const backgroundImage = "/backgroundImage.jpg";
   return (
     <Box
       id="home"
