@@ -1,7 +1,9 @@
+import type React from "react";
 import { Box, Container, Typography, IconButton } from "@mui/material";
 import { Instagram, Linkedin, Youtube, Twitter, Facebook } from "lucide-react";
+import { colors } from "../../theme/theme";
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -32,9 +34,9 @@ export const Footer = () => {
     <Box
       component="footer"
       sx={{
-        bgcolor: "#0a0a0a",
-        color: "white",
-        py: 4,
+        bgcolor: colors.background.dark,
+        color: colors.text.primary,
+        py: { xs: 6, md: 8 },
       }}
     >
       <Container maxWidth="lg">
@@ -56,6 +58,7 @@ export const Footer = () => {
                 fontWeight: 700,
                 fontSize: "1.5rem",
                 letterSpacing: "-0.02em",
+                color: colors.text.primary,
               }}
             >
               Lloyd Ndebele
@@ -63,7 +66,7 @@ export const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                color: "rgba(255, 255, 255, 0.5)",
+                color: colors.text.secondary,
                 fontSize: "0.875rem",
               }}
             >
@@ -76,7 +79,7 @@ export const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                color: "rgba(255, 255, 255, 0.5)",
+                color: colors.text.secondary,
                 mb: 1,
                 fontSize: "0.75rem",
                 textTransform: "uppercase",
@@ -94,12 +97,14 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   sx={{
-                    color: "white",
+                    color: colors.text.primary,
                     bgcolor: "rgba(255, 255, 255, 0.1)",
                     width: 36,
                     height: 36,
+                    border: `1px solid ${colors.accent}`,
                     "&:hover": {
-                      bgcolor: "rgba(255, 255, 255, 0.2)",
+                      bgcolor: colors.accent,
+                      color: colors.background.dark,
                     },
                   }}
                 >
@@ -125,7 +130,7 @@ export const Footer = () => {
           <Typography
             variant="body2"
             sx={{
-              color: "rgba(255, 255, 255, 0.5)",
+              color: colors.text.secondary,
               fontSize: "0.75rem",
             }}
           >

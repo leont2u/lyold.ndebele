@@ -1,8 +1,8 @@
-"use client";
-
+import type React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { colors } from "../../theme/theme";
 
 interface ProcessStep {
   number: string;
@@ -12,32 +12,32 @@ interface ProcessStep {
 
 const processSteps: ProcessStep[] = [
   {
-    number: "01",
-    title: "Initial Consultation",
+    number: "01.",
+    title: "analysis",
     description:
-      "Looking for a new project? We'll find the perfect match for your vision. Know what you need already? Skip this step and find your brand.",
+      "We analyze your project to identify the core message and set the direction for the next steps.",
   },
   {
-    number: "02",
-    title: "Planning & Pre-Production",
+    number: "02.",
+    title: "concept",
     description:
-      "Speak with our creative team without stepping foot in an office. Chat online to find the best approach for you and your project.",
+      "We create compelling concepts, bringing ideas to life with visual mood boards.",
   },
   {
-    number: "03",
-    title: "Production Day",
+    number: "03.",
+    title: "visuals & manifesto",
     description:
-      "We'll deliver high-quality footage directly to your door — at an additional cost. Professional equipment and experienced crew.",
+      "We provide 3D visualizations and a manifesto to convey the key message and ensure lasting impact.",
   },
   {
-    number: "04",
-    title: "Post-Production & Delivery",
+    number: "04.",
+    title: "budgeting",
     description:
-      "Never stand in line at a delivery point. Manage automatic refills, get free storage for your final video anytime.",
+      "We offer transparent pricing with no hidden costs for your peace of mind.",
   },
 ];
 
-export const Process = () => {
+export const Process: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -48,133 +48,288 @@ export const Process = () => {
       id="process"
       component="section"
       sx={{
-        py: { xs: 8, md: 12 },
-        bgcolor: "background.default",
+        bgcolor: colors.background.dark,
+        color: colors.text.primary,
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container maxWidth="lg">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          <Typography
-            variant="h2"
+          <Box
             sx={{
-              fontSize: { xs: "2rem", md: "2.5rem" },
-              fontWeight: 700,
-              mb: 8,
-
-              color: "text.primary",
+              position: "relative",
+              minHeight: { xs: "1400px", md: "1200px" },
+              display: { xs: "none", md: "block" },
             }}
           >
-            My Process
-          </Typography>
-        </motion.div>
+            {/* SVG Curved Path */}
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 800 1200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <motion.path
+                d="M 400 50 Q 600 150, 550 350 T 250 650 T 550 950 T 400 1150"
+                stroke={colors.accent}
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={inView ? { pathLength: 1 } : {}}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+            </svg>
 
-        <Box sx={{ position: "relative", maxWidth: "900px", mx: "auto" }}>
-          {processSteps.map((step, index) => {
-            const isEven = index % 2 === 0;
+            {/* Process Steps Positioned Along Curve */}
+            {/* Step 1 - Top Right */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{
+                position: "absolute",
+                top: "8%",
+                right: "15%",
+              }}
+            >
+              <Box sx={{ textAlign: "right", maxWidth: 280 }}>
+                <Typography
+                  sx={{
+                    fontSize: "1.5rem",
+                    fontWeight: 300,
+                    color: colors.text.primary,
+                    mb: 1,
+                  }}
+                >
+                  {processSteps[0].number}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "1.75rem",
+                    fontWeight: 700,
+                    color: colors.text.primary,
+                    mb: 1,
+                    textTransform: "lowercase",
+                  }}
+                >
+                  {processSteps[0].title}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "0.95rem",
+                    color: colors.text.secondary,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {processSteps[0].description}
+                </Typography>
+              </Box>
+            </motion.div>
 
-            return (
+            {/* Step 2 - Middle Left */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              style={{
+                position: "absolute",
+                top: "32%",
+                left: "8%",
+              }}
+            >
+              <Box sx={{ textAlign: "left", maxWidth: 280 }}>
+                <Typography
+                  sx={{
+                    fontSize: "1.5rem",
+                    fontWeight: 300,
+                    color: colors.text.primary,
+                    mb: 1,
+                  }}
+                >
+                  {processSteps[1].number}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "1.75rem",
+                    fontWeight: 700,
+                    color: colors.text.primary,
+                    mb: 1,
+                    textTransform: "lowercase",
+                  }}
+                >
+                  {processSteps[1].title}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "0.95rem",
+                    color: colors.text.secondary,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {processSteps[1].description}
+                </Typography>
+              </Box>
+            </motion.div>
+
+            {/* Step 3 - Lower Right */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              style={{
+                position: "absolute",
+                top: "58%",
+                right: "8%",
+              }}
+            >
+              <Box sx={{ textAlign: "right", maxWidth: 280 }}>
+                <Typography
+                  sx={{
+                    fontSize: "1.5rem",
+                    fontWeight: 300,
+                    color: colors.text.primary,
+                    mb: 1,
+                  }}
+                >
+                  {processSteps[2].number}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "1.75rem",
+                    fontWeight: 700,
+                    color: colors.text.primary,
+                    mb: 1,
+                    textTransform: "lowercase",
+                  }}
+                >
+                  {processSteps[2].title}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "0.95rem",
+                    color: colors.text.secondary,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {processSteps[2].description}
+                </Typography>
+              </Box>
+            </motion.div>
+
+            {/* Step 4 - Bottom Left */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              style={{
+                position: "absolute",
+                top: "82%",
+                left: "15%",
+              }}
+            >
+              <Box sx={{ textAlign: "left", maxWidth: 280 }}>
+                <Typography
+                  sx={{
+                    fontSize: "1.5rem",
+                    fontWeight: 300,
+                    color: colors.text.primary,
+                    mb: 1,
+                  }}
+                >
+                  {processSteps[3].number}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "1.75rem",
+                    fontWeight: 700,
+                    color: colors.text.primary,
+                    mb: 1,
+                    textTransform: "lowercase",
+                  }}
+                >
+                  {processSteps[3].title}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "0.95rem",
+                    color: colors.text.secondary,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {processSteps[3].description}
+                </Typography>
+              </Box>
+            </motion.div>
+          </Box>
+
+          {/* Mobile Version - Stacked */}
+          <Box sx={{ display: { xs: "block", md: "none" } }}>
+            {processSteps.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: {
-                      xs: "column",
-                      md: isEven ? "row" : "row-reverse",
-                    },
-                    alignItems: "flex-start",
-                    mb: { xs: 6, md: 8 },
-                    gap: { xs: 2, md: 6 },
-                    position: "relative",
+                    mb: 6,
+                    pb: 6,
+                    borderBottom:
+                      index < processSteps.length - 1
+                        ? `1px solid ${colors.accent}`
+                        : "none",
                   }}
                 >
-                  {/* Number Section */}
-                  <Box
+                  <Typography
                     sx={{
-                      flex: "0 0 auto",
-                      width: { xs: "100%", md: "45%" },
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: isEven
-                        ? { xs: "flex-start", md: "flex-end" }
-                        : "flex-start",
-                      position: "relative",
+                      fontSize: "1.25rem",
+                      fontWeight: 300,
+                      color: colors.text.primary,
+                      mb: 1,
                     }}
                   >
-                    <Typography
-                      sx={{
-                        fontSize: { xs: "3rem", md: "4rem" },
-                        fontWeight: 300,
-                        color: "primary.main",
-                        lineHeight: 1,
-                        mb: 1,
-                      }}
-                    >
-                      {step.number}
-                    </Typography>
-
-                    {/* Vertical line connector */}
-                    {index < processSteps.length - 1 && (
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          left: isEven
-                            ? { xs: "1.5rem", md: "auto" }
-                            : "1.5rem",
-                          right: isEven ? { xs: "auto", md: "1.5rem" } : "auto",
-                          top: "4rem",
-                          width: "1px",
-                          height: { xs: "80px", md: "120px" },
-                          bgcolor: "divider",
-                          display: { xs: "none", md: "block" },
-                        }}
-                      />
-                    )}
-                  </Box>
-
-                  {/* Content Section */}
-                  <Box
+                    {step.number}
+                  </Typography>
+                  <Typography
                     sx={{
-                      flex: "0 0 auto",
-                      width: { xs: "100%", md: "45%" },
-                      textAlign: isEven ? { xs: "left", md: "left" } : "left",
+                      fontSize: "1.5rem",
+                      fontWeight: 700,
+                      color: colors.text.primary,
+                      mb: 2,
+                      textTransform: "lowercase",
                     }}
                   >
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontSize: { xs: "1.25rem", md: "1.5rem" },
-                        fontWeight: 600,
-                        mb: 1.5,
-                        color: "text.primary",
-                      }}
-                    >
-                      {step.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: { xs: "0.95rem", md: "1rem" },
-                        color: "text.secondary",
-                        lineHeight: 1.7,
-                      }}
-                    >
-                      {step.description}
-                    </Typography>
-                  </Box>
+                    {step.title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "0.95rem",
+                      color: colors.text.secondary,
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {step.description}
+                  </Typography>
                 </Box>
               </motion.div>
-            );
-          })}
-        </Box>
+            ))}
+          </Box>
+        </motion.div>
       </Container>
     </Box>
   );
