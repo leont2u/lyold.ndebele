@@ -4,14 +4,12 @@ import {
   Typography,
   IconButton,
   useTheme,
-  useMediaQuery,
   Container,
 } from "@mui/material";
 import { Menu } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box
