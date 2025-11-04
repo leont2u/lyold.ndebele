@@ -1,16 +1,18 @@
 import type React from "react";
-import { Box, Container, Typography, IconButton, Stack } from "@mui/material";
+import { Box, Container, Typography, Stack, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { Menu } from "lucide-react";
+import { Navbar } from "../../components/NavBar";
 
 export const Hero: React.FC = () => {
+  const theme = useTheme();
+
   return (
     <Box
       id="home"
       sx={{
         position: "relative",
-        backgroundColor: "#292a2d",
-        color: "#ffffff",
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.primary.main,
         minHeight: "100vh",
         overflow: "hidden",
         display: "flex",
@@ -18,37 +20,10 @@ export const Hero: React.FC = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         pb: { xs: 6, md: 10 },
+        pt: { xs: 12, md: 14 },
       }}
     >
-      {/* Navbar */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 10,
-          px: { xs: 3, md: 8 },
-          py: 3,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            fontWeight: 700,
-            fontSize: "1.1rem",
-            letterSpacing: "0.05em",
-          }}
-        >
-          Lloyd Ndebele
-        </Typography>
-
-        <IconButton sx={{ color: "#ffffff" }}>
-          <Menu />
-        </IconButton>
-      </Box>
+      <Navbar />
 
       {/* Hero Content */}
       <Container
@@ -59,10 +34,10 @@ export const Hero: React.FC = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "flex-end", // ensures it sits toward bottom
+          justifyContent: "flex-end",
           textAlign: "center",
           height: "100vh",
-          pb: { xs: 6, md: 10 }, // spacing from bottom for breathing room
+          pb: { xs: 6, md: 10 },
         }}
       >
         {/* Name */}
@@ -74,10 +49,10 @@ export const Hero: React.FC = () => {
           <Typography
             sx={{
               fontWeight: 900,
-              fontSize: { xs: "2.5rem", sm: "4rem", md: "8rem" }, // 👈 responsive scaling
+              fontSize: { xs: "2.5rem", sm: "4rem", md: "8rem" },
               textTransform: "none",
               lineHeight: { xs: 1.1, md: 0.9 },
-              color: "#ffffff",
+              color: theme.palette.primary.main,
             }}
           >
             Lloyd Ndebele<span style={{ fontSize: "2rem" }}>®</span>
@@ -92,66 +67,50 @@ export const Hero: React.FC = () => {
           spacing={{ xs: 3, sm: 6 }}
           sx={{
             mt: { xs: 4, md: 8 },
-            color: "#ffffff",
+            color: theme.palette.primary.main,
             px: { xs: 2, sm: 0 },
           }}
         >
-          <Box textAlign="center">
-            <Typography
-              sx={{ fontSize: { xs: "0.8rem", sm: "0.9rem" }, mb: 1 }}
-            >
-              ©2025
-            </Typography>
-            <Typography
-              sx={{
-                maxWidth: { xs: 260, sm: 280 },
-                mx: "auto",
-                fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                lineHeight: 1.4,
-              }}
-            >
-              Cinematographer crafting immersive visuals that connect, move, and
-              inspire.
-            </Typography>
-          </Box>
-
-          <Box textAlign="center">
-            <Typography
-              sx={{ fontSize: { xs: "0.8rem", sm: "0.9rem" }, mb: 1 }}
-            >
-              Brand
-            </Typography>
-            <Typography
-              sx={{
-                maxWidth: { xs: 260, sm: 280 },
-                mx: "auto",
-                fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                lineHeight: 1.4,
-              }}
-            >
-              I create distinctive, story-driven visual identities that make
-              lasting impressions.
-            </Typography>
-          </Box>
-
-          <Box textAlign="center">
-            <Typography
-              sx={{ fontSize: { xs: "0.8rem", sm: "0.9rem" }, mb: 1 }}
-            >
-              Film & Editing
-            </Typography>
-            <Typography
-              sx={{
-                maxWidth: { xs: 260, sm: 280 },
-                mx: "auto",
-                fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                lineHeight: 1.4,
-              }}
-            >
-              Seamless storytelling and cinematic editing designed to evoke
-              emotion and impact.
-            </Typography>
-          </Box>
+          {[
+            {
+              title: "©2025",
+              description:
+                "Cinematographer crafting immersive visuals that connect, move, and inspire.",
+            },
+            {
+              title: "Brand",
+              description:
+                "I create distinctive, story-driven visual identities that make lasting impressions.",
+            },
+            {
+              title: "Film & Editing",
+              description:
+                "Seamless storytelling and cinematic editing designed to evoke emotion and impact.",
+            },
+          ].map((item, index) => (
+            <Box key={index} textAlign="center">
+              <Typography
+                variant="h4"
+                sx={{
+                  mb: 1,
+                  color: theme.palette.primary.main,
+                }}
+              >
+                {item.title}
+              </Typography>
+              <Typography
+                sx={{
+                  maxWidth: { xs: 260, sm: 280 },
+                  mx: "auto",
+                  fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                  lineHeight: 1.4,
+                  color: theme.palette.text.secondary,
+                }}
+              >
+                {item.description}
+              </Typography>
+            </Box>
+          ))}
         </Stack>
       </Container>
     </Box>

@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import ProjectShowcase from "./pages/sections/ProjectShowcase";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme/theme";
-import ContactSection from "./pages/sections/Contacts";
 import Footer from "./pages/sections/Footer";
 import { Hero } from "./pages/sections/Hero";
+import ProjectShowcase from "./pages/sections/Projects";
+import ContactSection from "./pages/sections/Contacts";
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Box sx={{ backgroundColor: "#292a2d", minHeight: "100vh" }}>
+      <Box sx={{ backgroundColor: theme.palette.background.default }}>
         <Box ref={heroRef}>
           <Hero />
         </Box>
@@ -24,7 +24,7 @@ export default function App() {
           <ProjectShowcase />
         </Box>
 
-        <Box ref={contactRef} sx={{ minHeight: "100vh", p: 4 }}>
+        <Box ref={contactRef}>
           <ContactSection />
         </Box>
         <Footer />
