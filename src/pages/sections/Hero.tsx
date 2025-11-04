@@ -19,7 +19,6 @@ export const Hero: React.FC = () => {
         flexDirection: "column",
         justifyContent: "flex-end",
         alignItems: "center",
-        pb: { xs: 6, md: 10 },
         pt: { xs: 12, md: 14 },
       }}
     >
@@ -37,7 +36,6 @@ export const Hero: React.FC = () => {
           justifyContent: "flex-end",
           textAlign: "center",
           height: "100vh",
-          pb: { xs: 6, md: 10 },
         }}
       >
         {/* Name */}

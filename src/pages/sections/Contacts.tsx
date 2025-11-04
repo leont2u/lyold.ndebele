@@ -1,13 +1,12 @@
-"use client";
 import {
   Box,
   Typography,
-  TextField,
-  Button,
   Container,
-  useTheme,
+  IconButton,
+  InputBase,
 } from "@mui/material";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useTheme } from "@mui/material/styles";
 
 export default function ContactSection() {
   const theme = useTheme();
@@ -16,188 +15,165 @@ export default function ContactSection() {
     <Box
       sx={{
         backgroundColor: theme.palette.background.default,
+        color: theme.palette.primary.main,
         minHeight: "100vh",
-        py: { xs: 8, md: 12 },
         display: "flex",
-        flexDirection: "column",
+        alignItems: "center",
         justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <Container maxWidth="lg">
-        {/* Section Header */}
-        <Box sx={{ mb: { xs: 8, md: 12 } }}>
-          <Typography
-            variant="h4"
-            sx={{
-              color: theme.palette.primary.main,
-              mb: { xs: 2, md: 3 },
-            }}
-          >
-            Get In Touch
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3.5rem" },
-              fontWeight: 700,
-              color: theme.palette.primary.main,
-              letterSpacing: "2px",
-              mb: { xs: 3, md: 5 },
-            }}
-          >
-            Contact
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: { xs: "0.9rem", md: "1rem" },
-              color: theme.palette.text.secondary,
-              opacity: 0.9,
-              lineHeight: 1.6,
-              maxWidth: 600,
-            }}
-          >
-            Interested in collaborating or want to discuss your project? Reach
-            out to me through any of these channels.
-          </Typography>
-        </Box>
-
-        {/* Contact Info & Form */}
-        <Box
+      <Container
+        maxWidth="lg"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gap: 6,
+          py: 8,
+        }}
+      >
+        {/* Header */}
+        <Typography
+          variant="h1"
           sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-            gap: { xs: 6, md: 12 },
+            fontWeight: 800,
+            fontSize: { xs: "3rem", sm: "4rem", md: "6rem" },
+            textTransform: "uppercase",
+            letterSpacing: "-1px",
+            color: "#fff",
+            mb: 4,
           }}
         >
-          {/* Contact Information */}
-          <Box>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              {[
-                {
-                  Icon: Mail,
-                  label: "Email",
-                  value: "lloyd.ndebele@example.com",
-                },
-                { Icon: Phone, label: "Phone", value: "+27 (0) 123 456 789" },
-                { Icon: MapPin, label: "Location", value: "South Africa" },
-              ].map((item, index) => (
-                <Box
-                  key={index}
-                  sx={{ display: "flex", gap: 2, alignItems: "flex-start" }}
-                >
-                  <item.Icon
-                    size={24}
-                    color={theme.palette.primary.main}
-                    style={{ marginTop: "4px", flexShrink: 0 }}
-                  />
-                  <Box>
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        color: theme.palette.primary.main,
-                        mb: 1,
-                      }}
-                    >
-                      {item.label}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: theme.palette.primary.main,
-                        fontSize: { xs: "0.9rem", md: "1rem" },
-                      }}
-                    >
-                      {item.value}
-                    </Typography>
-                  </Box>
-                </Box>
-              ))}
-            </Box>
+          Get in Touch
+        </Typography>
+
+        {/* Form */}
+        <Box
+          component="form"
+          noValidate
+          autoComplete="off"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
+            color: theme.palette.primary.main,
+          }}
+        >
+          {/* Row 1 */}
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+              gap: 3,
+            }}
+          >
+            <InputBase
+              placeholder="Name"
+              sx={{
+                borderBottom: `1px solid ${theme.palette.primary.main}`,
+                color: "#fff",
+                fontSize: "1rem",
+                pb: 1,
+              }}
+            />
+            <InputBase
+              placeholder="Company"
+              sx={{
+                borderBottom: `1px solid ${theme.palette.primary.main}`,
+                color: "#fff",
+                fontSize: "1rem",
+                pb: 1,
+              }}
+            />
           </Box>
 
-          {/* Contact Form */}
+          {/* Row 2 */}
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+              gap: 3,
+            }}
+          >
+            <InputBase
+              placeholder="E-mail"
+              sx={{
+                borderBottom: `1px solid ${theme.palette.primary.main}`,
+                color: "#fff",
+                fontSize: "1rem",
+                pb: 1,
+              }}
+            />
+            <InputBase
+              placeholder="Phone"
+              sx={{
+                borderBottom: `1px solid ${theme.palette.primary.main}`,
+                color: "#fff",
+                fontSize: "1rem",
+                pb: 1,
+              }}
+            />
+          </Box>
+
+          {/* Message Row */}
           <Box
             sx={{
               display: "flex",
-              flexDirection: "column",
-              gap: 2.5,
+              alignItems: "center",
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
             }}
           >
-            {[
-              { placeholder: "Your Name" },
-              { placeholder: "Your Email" },
-              { placeholder: "Subject" },
-            ].map((field, index) => (
-              <TextField
-                key={index}
-                placeholder={field.placeholder}
-                variant="outlined"
-                fullWidth
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: theme.palette.primary.main,
-                    "& fieldset": {
-                      borderColor: theme.palette.primary.main,
-                    },
-                    "&:hover fieldset": {
-                      borderColor: theme.palette.primary.main,
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: theme.palette.primary.main,
-                    },
-                  },
-                  "& .MuiOutlinedInput-input::placeholder": {
-                    color: theme.palette.primary.main,
-                    opacity: 0.5,
-                  },
-                }}
-              />
-            ))}
-            <TextField
+            <InputBase
               placeholder="Message"
-              variant="outlined"
               fullWidth
               multiline
-              rows={4}
               sx={{
-                "& .MuiOutlinedInput-root": {
-                  color: theme.palette.primary.main,
-                  "& fieldset": {
-                    borderColor: theme.palette.primary.main,
-                  },
-                  "&:hover fieldset": {
-                    borderColor: theme.palette.primary.main,
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: theme.palette.primary.main,
-                  },
-                },
-                "& .MuiOutlinedInput-input::placeholder": {
-                  color: theme.palette.primary.main,
-                  opacity: 0.5,
-                },
+                color: "#fff",
+                fontSize: "1rem",
+                py: 1.5,
               }}
             />
-            <Button
-              variant="contained"
+            <IconButton
+              type="submit"
               sx={{
-                backgroundColor: theme.palette.primary.main,
-                color: theme.palette.background.default,
-                textTransform: "uppercase",
-                letterSpacing: "2px",
-                fontSize: "0.75rem",
-                fontWeight: 600,
-                padding: "14px 40px",
-                borderRadius: "25px",
-                mt: 2,
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  backgroundColor: theme.palette.primary.main,
-                  opacity: 0.9,
-                },
+                color: theme.palette.primary.main,
+                "&:hover": { color: "#d4af37" },
               }}
             >
-              Send Message
-            </Button>
+              <ArrowRight />
+            </IconButton>
           </Box>
+        </Box>
+
+        {/* Footer Note */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            mt: 4,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "0.9rem",
+              color: "rgba(255,255,255,0.6)",
+              textAlign: "right",
+            }}
+          >
+            Hate contact forms? <br />
+            Me too →{" "}
+            <Box
+              component="span"
+              sx={{
+                color: theme.palette.primary.main,
+                ml: 0.5,
+              }}
+            >
+              info@lloydndebele.com
+            </Box>
+          </Typography>
         </Box>
       </Container>
     </Box>

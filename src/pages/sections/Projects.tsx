@@ -36,8 +36,6 @@ export default function ProjectShowcase() {
         justifyContent: "center",
         overflow: "hidden",
         textAlign: "center",
-        px: { xs: 2, md: 4 },
-        py: { xs: 8, md: 12 },
       }}
     >
       <Container

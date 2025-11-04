@@ -29,7 +29,6 @@ export const Navbar: React.FC = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          px: { xs: 2, md: 8 },
         }}
       >
         <Typography
