@@ -1,36 +1,56 @@
 "use client";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Container, useTheme } from "@mui/material";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
-        backgroundColor: "#292a2d",
-        padding: { xs: "40px 20px", md: "60px" },
-
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        justifyContent: "space-between",
-        alignItems: { xs: "flex-start", md: "center" },
-        gap: { xs: "30px", md: "0" },
+        backgroundColor: theme.palette.background.default,
       }}
     >
-      <Typography
+      <Container
+        maxWidth="lg"
         sx={{
-          fontSize: { xs: "0.7rem", md: "0.85rem" },
-          color: "#ffffff",
-          letterSpacing: "1px",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          alignItems: { xs: "flex-start", md: "center" },
+          gap: { xs: 4, md: 0 },
+          py: { xs: 6, md: 8 },
         }}
       >
-        © 2025 Lloyd Ndebele. All rights reserved.
-      </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            color: theme.palette.primary.main,
+            fontSize: { xs: "0.7rem", md: "0.85rem" },
+            letterSpacing: "1px",
+          }}
+        >
+          © 2025 Lloyd Ndebele. All rights reserved.
+        </Typography>
 
-      <Box sx={{ display: "flex", gap: { xs: "20px", md: "30px" } }}>
-        <Facebook size={20} color="#ffffff" style={{ cursor: "pointer" }} />
-        <Twitter size={20} color="#ffffff" style={{ cursor: "pointer" }} />
-        <Instagram size={20} color="#ffffff" style={{ cursor: "pointer" }} />
-      </Box>
+        <Box sx={{ display: "flex", gap: { xs: 3, md: 4 } }}>
+          <Facebook
+            size={20}
+            color={theme.palette.primary.main}
+            style={{ cursor: "pointer" }}
+          />
+          <Twitter
+            size={20}
+            color={theme.palette.primary.main}
+            style={{ cursor: "pointer" }}
+          />
+          <Instagram
+            size={20}
+            color={theme.palette.primary.main}
+            style={{ cursor: "pointer" }}
+          />
+        </Box>
+      </Container>
     </Box>
   );
 }
