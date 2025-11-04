@@ -5,6 +5,7 @@ import Footer from "./pages/sections/Footer";
 import { Hero } from "./pages/sections/Hero";
 import ProjectShowcase from "./pages/sections/Projects";
 import ContactSection from "./pages/sections/Contacts";
+import AboutSection from "./pages/sections/About";
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,7 @@ export default function App() {
         </Box>
 
         <Box ref={projectsRef}>
+          <AboutSection />
           <ProjectShowcase />
         </Box>
 
