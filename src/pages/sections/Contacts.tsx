@@ -31,7 +31,6 @@ export default function ContactSection() {
           flexDirection: "column",
           justifyContent: "center",
           gap: 6,
-          py: 8,
         }}
       >
         {/* Header */}
