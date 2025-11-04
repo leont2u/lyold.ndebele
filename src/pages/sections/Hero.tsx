@@ -2,17 +2,15 @@ import type React from "react";
 import { Box, Container, Typography, IconButton, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
-import { colors } from "../../theme/theme";
 
 export const Hero: React.FC = () => {
-  const backgroundImage = "/backgroundImage.jpg";
   return (
     <Box
       id="home"
       sx={{
         position: "relative",
-        bgcolor: colors.background.dark,
-        color: colors.text.primary,
+        backgroundColor: "#292a2d",
+        color: "#ffffff",
         minHeight: "100vh",
         overflow: "hidden",
         display: "flex",
@@ -22,34 +20,6 @@ export const Hero: React.FC = () => {
         pb: { xs: 6, md: 10 },
       }}
     >
-      <Box
-        component="img"
-        src={backgroundImage}
-        alt="Lloyd Ndebele"
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          filter: "brightness(0.55) blur(0.5px)",
-          zIndex: 1,
-          bottom: 0,
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: "40%",
-          background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
-          zIndex: 2,
-        }}
-      />
-
       {/* Navbar */}
       <Box
         sx={{
@@ -75,7 +45,7 @@ export const Hero: React.FC = () => {
           Lloyd Ndebele
         </Typography>
 
-        <IconButton sx={{ color: colors.text.primary }}>
+        <IconButton sx={{ color: "#ffffff" }}>
           <Menu />
         </IconButton>
       </Box>
@@ -107,7 +77,7 @@ export const Hero: React.FC = () => {
               fontSize: { xs: "2.5rem", sm: "4rem", md: "8rem" }, // 👈 responsive scaling
               textTransform: "none",
               lineHeight: { xs: 1.1, md: 0.9 },
-              color: colors.text.primary,
+              color: "#ffffff",
             }}
           >
             Lloyd Ndebele<span style={{ fontSize: "2rem" }}>®</span>
@@ -122,7 +92,7 @@ export const Hero: React.FC = () => {
           spacing={{ xs: 3, sm: 6 }}
           sx={{
             mt: { xs: 4, md: 8 },
-            color: colors.text.secondary,
+            color: "#ffffff",
             px: { xs: 2, sm: 0 },
           }}
         >
